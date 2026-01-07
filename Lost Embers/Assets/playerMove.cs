@@ -4,11 +4,11 @@ using Unity.Netcode;
 public class playerMove : MonoBehaviour
 {
     public float speed = 5f;
-    private bool IsOwner = true;
+    private bool IsOwner = false;
 
     void Start()
     {
-        if(IsOwner)
+        if(!IsOwner)
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
@@ -17,7 +17,7 @@ public class playerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!IsOwner) return;
+        if(IsOwner) return;
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
